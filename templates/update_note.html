@@ -1,0 +1,12 @@
+{%extends "layout.html" %}
+{%block body%}
+<br>
+  <h3>Not Değiştir</h3>
+
+  <form method="post">
+    <br>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-danger">Güncelle</button>
+  </form>
+{%endblock body%}

@@ -1,0 +1,10 @@
+{%extends "layout.html" %}
+{%block body%}
+<br>
+  <h3>Notlarım</h3>
+
+  <h1>{{ object.title }}</h1>
+  <p>{{ object.content }}</p>
+  <button type="button" name="button"> <a class="active" id="dashboard" href="/articles/update_note/{{object.id}}/">Notu Güncelle</a></button>
+  <button type="submit" name="button"> <a class="active" id="dashboard" href="/articles/delete_note/{{object.id}}/">Notu Sil</a></button>
+{%endblock body%}

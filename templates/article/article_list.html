@@ -1,0 +1,11 @@
+{%extends "layout.html" %}
+{%block body%}
+<br>
+  <h3>Notlarım</h3>
+
+  <ul>
+        {% for a in my_notes %}
+            <li><a href="/articles/article/{{a.id}}">{{ a.title }}</a></li>
+        {% endfor %}
+    </ul>
+{%endblock body%}
