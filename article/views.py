@@ -14,6 +14,7 @@ from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 
 class ArticleAPIView(APIView):
+    
 
     def get(self,request):
         articles=Article.objects.all()
@@ -22,14 +23,11 @@ class ArticleAPIView(APIView):
         return Response(serializer.data)
 
     def post(self,request):
-        try:
-            serializer=ArticleSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data,status=status.HTTP_201_CREATED)
-            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            print(e) 
+        serializer=ArticleSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
 class NotDetail(DetailView):
@@ -95,7 +93,6 @@ def article_api(request):
         return JsonResponse(serializer.errors,status=400)
 
 @csrf_exempt
-
 def article_detail(request,pk):
     try:
         article=Article.objects.get(pk=pk)
